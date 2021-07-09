@@ -1,8 +1,12 @@
 from django.conf import settings
-from django.conf.urls import url
-
+from django.urls import include, path
 from . import views
+from django.contrib.auth import views as auth_views
+
 
 urlpatterns =[
-    url(r'^$',views.home,name='home'),
+    path('',views.home,name='home'),
+    path('accounts/', include('django_registration.backends.one_step.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('logout/', auth_views.LogoutView,{"next_page":'/'}),
 ]
