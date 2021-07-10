@@ -24,7 +24,7 @@ class Photos(models.Model):
     image=models.ImageField(upload_to='images/', default="Image")
 
     def __str__(self):
-        return self.title
+        return str(self.post)[:10]
     
 class tags(models.Model):
     name=models.CharField(max_length=30)

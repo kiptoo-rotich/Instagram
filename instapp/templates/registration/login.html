@@ -9,22 +9,22 @@
             {% if form.errors %}
             <p> Password or Username is incorrect </p>
             {% endif %}
-            <div class="panel panel-default">
+            <div class="panel panel-default" style=" background-color:rgb(116, 255, 255); margin-top:35%">
 
                 <div class="panel-heading">
-                    <h3 class="text-center">Sign In</h3>
+                    <h2 class="text-center">SIGN IN</h2>
                 </div>
                 <div class="panel-body">
 
                     <form action="/accounts/login/" method="post">
                         {% csrf_token %}
                         {% bootstrap_form form%}
-
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary btn-sm" value="Login">
                         </div>
+                        <p>Don't have an account? Register <a href="{%url 'registration'%}">here</a></p>
 
-                        <input type="hidden" name="next" value="{{next}}">
+                        <input type="hidden" name="next" value="/">
 
                     </form>
 
