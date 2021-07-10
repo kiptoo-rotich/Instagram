@@ -8,6 +8,7 @@ from django.conf.urls.static import static
 urlpatterns =[
     path('',views.home,name='home'),
     path('accounts/', include('django_registration.backends.one_step.urls')),
+    path('register/', views.registrationPage,name='registration'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('logout/', auth_views.LogoutView,{"next_page":'/'}),
 ]
