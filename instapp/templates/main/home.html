@@ -4,6 +4,21 @@
 {%block content%}
 {{block.super}}
 
+<div class="container">
+    <div class="card" style="width: 18rem;">
+        <div class="row">
+            {%for post in post%}
+            <h3 class="card-title">{{post.title}}</h3>
+            <img class="card-img-top" src="{{post.image.url}}" alt="Card image cap" class="img-responsive image">
+            <div class="card-body">
+                <div class="card-text overlay">Some quick example text to build on the card title and make up the bulk
+                    of the
+                    card's content.</div>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div><br>
+            {%endfor%}
+        </div>
+    </div>
+</div>
 
-<h1 class="text-center">Home</h1>
 {%endblock%}
