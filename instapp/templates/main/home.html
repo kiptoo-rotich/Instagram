@@ -5,19 +5,26 @@
 {{block.super}}
 
 <div class="container">
-    <div class="card" style="width: 18rem;">
+    <div>
         <div class="row">
-            <div class="post">
+            <div class="col-sm-12 col-md-8 col-lg-8">
                 {%for post in post%}
-                <h1>{{post.editor.first_name}}</h1>
-                <h3 class="card-title">{{post.title}}</h3>
-                <img class="card-img-top" src="{{post.image.url}}" alt="Card image cap" class="img-responsive image">
-                <div class="card-body">
-                    <div class="card-text">Some quick example text to build on the card title and make up the
-                        bulk of the card's content.</div>
-                    <i>Posted {{post.pub_date}}</i>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div><br>
+                <div class="post">
+                    <h1>{{post.editor.first_name}}</h1>
+                    <img src="{{post.image.url}}" alt="Card image cap" class="img-responsive image">
+                    <div class="d-flex icons">
+                        <img class="like" src="../../static/icons/icons8-heart-50.png" alt="Love" width="30px">
+                        <img class="comment" src="../../static/icons/icons8-speech-bubble-50.png" alt="Comment" width="30px">
+                    </div>
+
+                    <div class="icons">
+                        <h3>{{post.title}}</h3>
+                        <p>Some quick example text to build on the card title and make up the
+                            bulk of the card's content.</p>
+                        <i>Posted {{post.pub_date|timesince}} ago.</i>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div><br>
+                </div>
                 {%endfor%}
             </div>
         </div>
