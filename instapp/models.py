@@ -16,13 +16,12 @@ class Editor(models.Model):
     def save_editor(self):
         self.save()
 
-class photos(models.Model):
+class Photos(models.Model):
     title = models.CharField(max_length=60)
-    post=HTMLField()
-    # tags=models.ManyToManyField(tags)
+    post=models.TextField(max_length=1000)
     pub_date=models.DateTimeField(auto_now_add=True)
-    editor = models.ForeignKey(User,on_delete=models.CASCADE,)
-    image=models.ImageField(upload_to='articles/', default="Image")
+    editor = models.ForeignKey(Editor,on_delete=models.CASCADE,)
+    image=models.ImageField(upload_to='images/', default="Image")
 
     def __str__(self):
         return self.title
