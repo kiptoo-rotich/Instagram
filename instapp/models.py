@@ -20,7 +20,7 @@ class Photos(models.Model):
     title = models.CharField(max_length=60)
     post=models.TextField(max_length=1000)
     pub_date=models.DateTimeField(auto_now_add=True)
-    editor = models.ForeignKey(Editor,on_delete=models.CASCADE,)
+    editor = models.ForeignKey('Editor',on_delete=models.CASCADE,)
     image=models.ImageField(upload_to='images/', default="Image")
 
     def __str__(self):
