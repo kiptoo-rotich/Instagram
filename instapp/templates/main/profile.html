@@ -1,0 +1,8 @@
+{%extends 'base.html'%}
+{%load bootstrap3%}
+{%load static%}
+{%block content%}
+<h2 class="account-heading">{{user.username}}</h2>
+<p class="text-secondary">{{user.email}}</p>
+<p>{{user.profile.Bio}}</p>
+{%endblock%}

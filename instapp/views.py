@@ -58,9 +58,9 @@ def profile(request):
         profile_form = profileForm(instance=request.user)
         user_form = UserUpdate(instance=request.user)
 
-        params = {
+        display = {
             'user_form':user_form,
             'profile_form': profile_form
         }
 
-    return render(request, 'main/profile.html', params)
+    return render(request, 'main/profile.html', display)

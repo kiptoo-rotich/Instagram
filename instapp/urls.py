@@ -10,6 +10,8 @@ urlpatterns =[
     path('register/', views.registrationPage,name='registration'),
     path('accounts/', include('django.contrib.auth.urls')),    
     path('comment/<id>', views.comment, name='comment'),
+    path('profile/', views.profile, name='profile'),
+
 ]
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
