@@ -32,7 +32,10 @@
                         <h3>{{post.title}}</h3>
                         <p>{{post.post}}</p>
                         <div class="container-fluid">
-                           
+                        <a href="{%url 'comment' post.id %}" class="pl-3">
+                            <p>{{post.comment.Count}}</p>
+                            View all comments                        
+                        </a>
                         </div>
                         <i>Posted {{post.pub_date|timesince}} ago.</i>
                     </div><br>

@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+{%load bootstrap3%}
+{%load static%}
+{%block content%}
+<form class="form" action="" method="post" novalidate>
+    {% csrf_token %}
+    {% bootstrap_form commentForm %}
+    <div class="row pl-5">
+        <button type="submit" class="btn btn-sm btn-outline-primary"
+            style="margin-top:14px; margin-left:-10px">Comment</button>
+    </div>
+
+    {%for comment in comment%}
+    <p>{{comment.comment}}</p>
+    {%endfor%}
+</form>
+{%endblock%}

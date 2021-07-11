@@ -10,9 +10,11 @@
                 </div>
                 <div class="panel-body">
                     <form action="/accounts/register/" method="post" style="margin-left: 15%;">
+                        {% csrf_token %}
+
                         {%for field in form%}
-                            <p>{{field.label}}</p>
-                            <p class="field">{{field}}</p>
+                        <p>{{field.label}}</p>
+                        <p class="field">{{field}}</p>
                         {%endfor%}
                         <div class="form-group">
                             <input type="submit" class="loginbtn btn btn-primary btn-sm" value="Register">
