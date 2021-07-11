@@ -9,7 +9,8 @@ def home(request):
     post=Photos.objects.all()
     editor=Editor.objects.all()
     date=dt.date.today()
-    return render(request, 'main/home.html',{"post":post,"editor":editor,"date":date})
+    current_user = request.user
+    return render(request, 'main/home.html',{"post":post,"editor":editor,"date":date,"current_user":current_user})
 
 def registrationPage(request):
     form=CreateUserForm()
