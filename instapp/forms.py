@@ -7,3 +7,7 @@ class CreateUserForm(UserCreationForm):
     class Meta:
         model=User
         fields=['username', 'email','password1','password2']
+
+class CommentForm():
+    comment=forms.CharField(label="Comment..",max_length=100)
+    

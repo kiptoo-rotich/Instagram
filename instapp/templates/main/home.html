@@ -20,21 +20,20 @@
 
                     </h1>
                     <img src="{{post.image.url}}" alt="Card image cap" class="img-responsive image">
-                    <div class="icons">
-                        <div>
-                            <img class="like" src="../../static/icons/icons8-heart-50.png" alt="Love" width="30px">
-                            <span id="likes">0</span>
-                        </div>
-                        <div>
-                            <img class="comment" src="../../static/icons/icons8-speech-bubble-50.png" alt="Comment"
-                                width="30px">
-                        </div>
-                    </div>
+                  
+                    <span class="like-row">
+                        <img class="like" src="{% static 'icons/heart.png' %}" alt="not likedpicture"  width="30px" class="img-responsive" type="" > 
+                        <img class="commenthrt" id='comment-icon' src="../../static/icons/icons8-speech-bubble-50.png"  width="30px" class="img-responsive"
+                            alt=" commentImage">
+                        </p>
+                    </span>
 
                     <div class="icons">
                         <h3>{{post.title}}</h3>
-                        <p>Some quick example text to build on the card title and make up the
-                            bulk of the card's content.</p>
+                        <p>{{post.post}}</p>
+                        <div class="container-fluid">
+                           
+                        </div>
                         <i>Posted {{post.pub_date|timesince}} ago.</i>
                     </div><br>
                 </div>

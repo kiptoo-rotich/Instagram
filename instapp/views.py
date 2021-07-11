@@ -12,6 +12,7 @@ def home(request):
     current_user = request.user
     return render(request, 'main/home.html',{"post":post,"editor":editor,"date":date,"current_user":current_user})
 
+
 def registrationPage(request):
     form=CreateUserForm()
     
@@ -20,3 +21,6 @@ def registrationPage(request):
         if form.is_valid():
             form.save()
     return render(request,"registration/registration_form.html",{"form":form})
+
+
+    
