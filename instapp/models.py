@@ -36,3 +36,33 @@ class tags(models.Model):
     def __str__(self):
         return self.name
 
+class Comment(models.Model):
+    comment=models.TextField()
+    image=models.ForeignKey(Photos, on_delete=models.CASCADE)
+    posted_on=models.DateTimeField(auto_now_add=True,null=True)
+    
+    def save_comment(self):
+        self.save()
+    
+    def delete(self):
+        self.delete()
+        
+class Profile(models.Model):
+    profilephoto = models.ImageField('profile')
+    Bio = models.CharField(max_length=30)
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    following = models.ManyToManyField(User,blank=True,related_name='follow')
+
+    def __str__(self):
+        return self.user.username
+
+    def delete_profile(self):
+        self.delete()
+    
+    def save_profile(self):
+        self.user    
+
+
+    @classmethod
+    def search_profile(cls, name):
+        return cls.objects.filter(user__username__icontains=name).all()
