@@ -10,11 +10,25 @@
             <div class="col-sm-12 col-md-8 col-lg-8">
                 {%for post in post%}
                 <div class="post">
-                    <h1>{{post.editor.first_name}}</h1>
+                    <h1>
+                        <div class="d-flex" style="padding-right:35px;">
+                            <img src="./../../static/icons/Avatar.png" alt="Avatar" width="35" height="35">
+                            {{post.editor.first_name}}
+                            <h4 class="current">{{current_user}}</h4>
+
+                        </div>
+
+                    </h1>
                     <img src="{{post.image.url}}" alt="Card image cap" class="img-responsive image">
-                    <div class="d-flex icons">
-                        <img class="like" src="../../static/icons/icons8-heart-50.png" alt="Love" width="30px">
-                        <img class="comment" src="../../static/icons/icons8-speech-bubble-50.png" alt="Comment" width="30px">
+                    <div class="icons">
+                        <div>
+                            <img class="like" src="../../static/icons/icons8-heart-50.png" alt="Love" width="30px">
+                            <span id="likes">0</span>
+                        </div>
+                        <div>
+                            <img class="comment" src="../../static/icons/icons8-speech-bubble-50.png" alt="Comment"
+                                width="30px">
+                        </div>
                     </div>
 
                     <div class="icons">
@@ -22,9 +36,22 @@
                         <p>Some quick example text to build on the card title and make up the
                             bulk of the card's content.</p>
                         <i>Posted {{post.pub_date|timesince}} ago.</i>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div><br>
                 </div>
+                {%endfor%}
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <div class="d-flex" style="display:flex"><img src="./../../static/icons/Avatar.png" alt="Avatar"
+                        width="26" height="26">
+                    <h4 class="current">{{current_user}}</h4>
+                </div>
+                <h3>My posts</h3>
+                {%for post in post%}
+                <p>
+                <ul>
+                    <li>{{post.title}} posted on {{post.pub_date}}</li>
+                </ul>
+                </p>
                 {%endfor%}
             </div>
         </div>

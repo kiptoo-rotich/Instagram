@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Editor,Photos,tags
+from .models import Editor,Photos,tags,Profile
 
 class ArticleAdmin(admin.ModelAdmin):
     filter_horizontal=('tags',)
@@ -7,4 +7,3 @@ class ArticleAdmin(admin.ModelAdmin):
 admin.site.register(Editor) 
 admin.site.register(Photos) 
 admin.site.register(tags) 
-
