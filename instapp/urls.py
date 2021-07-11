@@ -8,7 +8,8 @@ urlpatterns =[
     path('',views.home,name='home'),
     path('accounts/', include('django_registration.backends.one_step.urls')),
     path('register/', views.registrationPage,name='registration'),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),    
+    path('comment/<id>', views.comment, name='comment'),
 ]
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
