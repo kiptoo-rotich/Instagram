@@ -22,12 +22,17 @@ class Photos(models.Model):
     pub_date=models.DateTimeField(auto_now_add=True)
     editor = models.ForeignKey('Editor',on_delete=models.CASCADE,)
     image=models.ImageField(upload_to='images/', default="Image")
-
+    likes=models.ManyToManyField(User,related_name='post_like')
+    
     def __str__(self):
         return str(self.post)[:10]
+    
+    def number_of_likes(self):
+        return self.likes.count()
     
 class tags(models.Model):
     name=models.CharField(max_length=30)
     
     def __str__(self):
         return self.name
+
