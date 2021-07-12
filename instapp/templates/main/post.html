@@ -1,0 +1,13 @@
+{%extends 'base.html'%}
+{%load bootstrap3%}
+{%load static%}
+{%block content%}
+<form action="{%url 'newPost'%}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary btn-sm" value="Post">
+    </div>
+    <input type="hidden" name="next" value="{{next}}">
+</form>
+{% endblock %}
