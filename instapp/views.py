@@ -3,7 +3,7 @@ from django.http import Http404, HttpResponse, HttpResponseRedirect
 from .models import Photos,Editor,Comment
 import datetime as dt
 from django.shortcuts import get_object_or_404
-from .forms import CreateUserForm,CommentForm
+from .forms import CreateUserForm,CommentForm,NewPost
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -64,3 +64,21 @@ def profile(request):
         }
 
     return render(request, 'main/profile.html', display)
+
+def new_post(request):
+    current_user=request.user
+    user_profile=Profile.objects.get(user=current_user)
+    if request.method=='POST':
+        form = NewPost(request.POST,request.FILES)
+        if form.is_valid():
+            image=form.cleaned_data.get('image')
+            captions=form.cleaned_data.get('post')
+            post=Photos(image=image,captions=captions,user_profile=user_profile)
+            post.save()
+        else:
+            print(form.errors)
+        
+        return redirect('home')
+    else:
+        form=NewPost()
+    return render(request,'main/post.html',{'form':form})
