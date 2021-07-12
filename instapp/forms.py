@@ -29,3 +29,9 @@ class UserUpdate(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username','email'] 
+    
+
+class  NewPost(forms.ModelForm):
+    class Meta:
+        model = Photos
+        exclude = ['pub_date', 'likes','profile']
