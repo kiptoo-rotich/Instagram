@@ -34,4 +34,4 @@ class UserUpdate(forms.ModelForm):
 class  NewPost(forms.ModelForm):
     class Meta:
         model = Photos
-        exclude = ['pub_date', 'likes','profile']
+        exclude = ['pub_date', 'likes']

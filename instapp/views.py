@@ -51,6 +51,7 @@ def comment(request,id):
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
+    current_user = request.user
     if request.method == 'POST':
 
         userForm = UserUpdate(request.POST, instance=request.user)
@@ -64,6 +65,7 @@ def profile(request):
     else:
         profile_form = profileForm(instance=request.user)
         user_form = UserUpdate(instance=request.user)
+    
 
         display = {
             'user_form':user_form,
@@ -82,7 +84,7 @@ def new_post(request):
             title=form.cleaned_data.get('title')
             image=form.cleaned_data.get('image')
             captions=form.cleaned_data.get('post')
-            post=Photos(title=title,image=image,captions=captions,profile=user_profile)
+            post = Photos(title=title, image=image, post=captions)
             post.save()
         else:
             print(form.errors)
@@ -91,3 +93,12 @@ def new_post(request):
     else:
         form=NewPost()
     return render(request,'main/post.html',{'form':form})
+
+
+@login_required(login_url='/accounts/login/')
+def details(request,image_id):
+    try:
+        image = Photos.objects.get(id=image_id)
+    except DoesNotExist:
+        raise Http404()
+    return render(request, 'main/details.html', {"image": image})
