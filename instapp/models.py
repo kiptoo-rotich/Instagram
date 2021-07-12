@@ -9,7 +9,7 @@ class Photos(models.Model):
     title = models.CharField(max_length=60)
     post=models.TextField(max_length=1000)
     pub_date=models.DateTimeField(auto_now_add=True)
-    profile = models.ForeignKey('Profile',on_delete=models.CASCADE,)
+    profile = models.ForeignKey('Profile',on_delete=models.CASCADE,null=True)
     image=models.ImageField(upload_to='images/', default="Image")
     likes=models.ManyToManyField(User,related_name='post_like')
     
@@ -39,7 +39,7 @@ class Comment(models.Model):
 class Profile(models.Model):
     profilephoto = models.ImageField('profile')
     Bio = models.CharField(max_length=30)
-    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    current_user = models.OneToOneField(User,on_delete=models.CASCADE,null=True)
     following = models.ManyToManyField(User,blank=True,related_name='follow')
 
     def __str__(self):
@@ -49,7 +49,7 @@ class Profile(models.Model):
         self.delete()
     
     def save_profile(self):
-        self.user    
+        self.save()    
 
 
     @classmethod
