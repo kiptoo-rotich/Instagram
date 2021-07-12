@@ -1,12 +1,17 @@
-from django.shortcuts import render,redirect
-from django.http import Http404, HttpResponse, HttpResponseRedirect
-from .models import Photos,Editor,Comment
+from __future__ import unicode_literals
+
 import datetime as dt
-from django.shortcuts import get_object_or_404
-from .forms import CreateUserForm,CommentForm,NewPost
-from django.contrib.auth.forms import UserCreationForm
+
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.http import Http404, HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
+
+from .forms import (CommentForm, CreateUserForm, NewPost, UserUpdate,
+                    profileForm)
+from .models import Comment, Photos, Profile
 
 
 @login_required(login_url='/accounts/login/')
@@ -27,6 +32,7 @@ def registrationPage(request):
             form.save()
     return render(request,"registration/registration_form.html",{"form":form})
 
+@login_required(login_url='/accounts/login/')
 def comment(request,id):
     comment=Comment.objects.filter(image=id)
     image=Photos.objects.filter(image=id).all()
@@ -43,6 +49,7 @@ def comment(request,id):
         commentForm=CommentForm()
     return render(request,'main/comment.html',{"commentForm":commentForm,"comment":comment,"image":image})
 
+@login_required(login_url='/accounts/login/')
 def profile(request):
     if request.method == 'POST':
 
@@ -65,15 +72,17 @@ def profile(request):
 
     return render(request, 'main/profile.html', display)
 
+@login_required(login_url='/accounts/login/')
 def new_post(request):
     current_user=request.user
-    user_profile=Profile.objects.get(user=current_user)
+    user_profile=Profile.objects.filter(current_user=current_user)
     if request.method=='POST':
         form = NewPost(request.POST,request.FILES)
         if form.is_valid():
+            title=form.cleaned_data.get('title')
             image=form.cleaned_data.get('image')
             captions=form.cleaned_data.get('post')
-            post=Photos(image=image,captions=captions,user_profile=user_profile)
+            post=Photos(title=title,image=image,captions=captions,profile=user_profile)
             post.save()
         else:
             print(form.errors)
