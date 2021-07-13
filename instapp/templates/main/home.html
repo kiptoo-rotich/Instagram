@@ -19,7 +19,8 @@
                         </div>
 
                     </h1>
-                    <a href="{%url 'details' post.id%}"><img src="{{post.image.url}}" alt="Card image cap" class="img-responsive image"></a>
+                    <a href="{%url 'details' post.id%}"><img src="{{post.image.url}}" alt="Card image cap"
+                            class="img-responsive image"></a>
 
                     <span class="like-row">
                         <img class="like" src="{% static 'icons/heart.png' %}" alt="not likedpicture" width="30px"
@@ -32,13 +33,14 @@
                     <div class="icons">
                         <h3>{{post.title}}</h3>
                         <p>{{post.post}}</p>
+                        <i>Posted {{post.pub_date|timesince}} ago.</i>
+
                         <div class="container-fluid">
                             <a href="{%url 'comment' post.id %}" class="pl-3">
                                 <p>{{post.comment.Count}}</p>
                                 View all comments
                             </a>
                         </div>
-                        <i>Posted {{post.pub_date|timesince}} ago.</i>
                     </div><br>
                 </div>
                 {%endfor%}

@@ -1,15 +1,15 @@
-{%extends "registration/base.html"%}
+{%extends "django_registration/base.html"%}
 {%block content%}
 <div class="container">
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <div class="panel panel-default" style=" background-color:rgb(116, 255, 255); margin-top:35%">
+            <div class="panel panel-default" style=" background-color:rgb(255, 255, 255); margin-top:35%">
                 <div class="panel-heading">
                     <h2 class="text-center">SIGN-UP</h2>
                 </div>
                 <div class="panel-body">
-                    <form action="/accounts/register/" method="post" style="margin-left: 15%;">
+                    <form action="" method="post" style="margin-left: 15%;">
                         {% csrf_token %}
 
                         {%for field in form%}
@@ -17,9 +17,9 @@
                         <p class="field">{{field}}</p>
                         {%endfor%}
                         <div class="form-group">
-                            <input type="submit" class="loginbtn btn btn-primary btn-sm" value="Register">
+                            <input type="submit" class="login btn btn btn-primary btn-sm" value="Register">
                         </div>
-                        <p>Already have an account? Login <a href="{%url 'login'%}">here</a></p>
+                        <p>Already have an account? Login <a href="{% url 'login' %}">here</a></p>
 
                         <input type="hidden" name="next" value="{{next}}">
                     </form>

@@ -14,7 +14,6 @@ from .forms import (CommentForm, CreateUserForm, NewPost, UserUpdate,
 from .models import Comment, Photos, Profile
 
 
-@login_required(login_url='/accounts/login/')
 def home(request):
     post=Photos.objects.all()
     editor=User.objects.all()
@@ -30,7 +29,7 @@ def registrationPage(request):
         form=CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
-    return render(request,"registration/registration_form.html",{"form":form})
+    return render(request,"django_registration/registration_form.html",{"form":form})
 
 @login_required(login_url='/accounts/login/')
 def comment(request,id):
