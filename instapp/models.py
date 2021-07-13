@@ -18,6 +18,10 @@ class Photos(models.Model):
     def number_of_likes(self):
         return self.likes.count()
 
+    @classmethod
+    def search(cls,search_term):
+        photos=cls.objects.filter(title__icontains=search_term)
+        return photos
 
 class tags(models.Model):
     name = models.CharField(max_length=30)

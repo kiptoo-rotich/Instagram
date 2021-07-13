@@ -11,6 +11,7 @@ urlpatterns =[
     path('accounts/', include('django.contrib.auth.urls')),    
     path('comment/<id>', views.comment, name='comment'),
     path('profile/', views.profile, name='profile'),
+    path('search/',views.search_results,name='search'),
     path('newpost/', views.new_post, name='new_post'),
     path('detail/<image_id>',views.details, name='details')
 
