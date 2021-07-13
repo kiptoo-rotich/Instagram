@@ -2,16 +2,16 @@
 {%block content%}
 <div class="container">
     <div class="row">
-        <img src="{{image.image.url}}" class="img-responsive" alt="">
+        <div class="col-md-8">
+            <img src="{{image.image.url}}" class="img-responsive" alt="">
+        </div>
+        <div class="col-md-4">
+            <h3>{{image.title}}</h3>
+            <h4>{{image.post}}</h4>
+            <em><i>Posted by {{image.user}} {{image.pub_date|timesince}} ago</i></em>
+        </div>
+
     </div>
 
-    <div class="row">
-        <p>{{image.title}}</p>
-        <p>{{image.post}}</p>
-    </div>
-
-    <div class="row">
-        <p>Posted by {{image.user}} {{image.pub_date|timesince}} ago</p>
-    </div>
 </div>
 {%endblock%}

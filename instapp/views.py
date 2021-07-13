@@ -77,14 +77,15 @@ def profile(request):
 @login_required(login_url='/accounts/login/')
 def new_post(request):
     current_user=request.user
-    user_profile=Profile.objects.filter(current_user=current_user)
+    user_profile=Profile.objects.filter(user=current_user)
     if request.method=='POST':
         form = NewPost(request.POST,request.FILES)
         if form.is_valid():
             title=form.cleaned_data.get('title')
             image=form.cleaned_data.get('image')
             captions=form.cleaned_data.get('post')
-            post = Photos(title=title, image=image, post=captions)
+            user=form.cleaned_data.get('user')
+            post = Photos(title=title, image=image, post=captions,user=user)
             post.save()
         else:
             print(form.errors)

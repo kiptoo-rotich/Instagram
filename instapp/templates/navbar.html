@@ -10,6 +10,7 @@
 
 <body>
     <nav class="navbar navbar-light bg-white">
+        <div class="col-md-3"></div>
 
         <div class="container-fluid">
             <div class="row navbar-header">
@@ -17,50 +18,51 @@
                 <a class="navbar-brand" href="/">Instagram</a>
             </div>
 
-            <div class="col-sm-6 col-md-6">
+            <div class="col-sm-6 col-md-6" style="display:flex;">
                 {% if user.is_authenticated %}
-                <ul style="float: right; clear:both; margin-top:1%; margin-right:15%; ">
+                <form class="form-inline my-2 my-lg-0" style="margin:5px">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+                <ul>
                     <li class="" style="display:flex;">
                         <ul style="list-style:none;display:flex;">
-                            <button type="button" class="btn btn-sm">
+                            <button style="margin:5px" type="button" class="btn btn-sm">
                                 <a href="{%url 'home'%}">Home</a>
-                            </button type="button" class="btn btn-sm">
-                            <button type="button" class="btn btn-sm">
-                                <a href="{%url 'home'%}">Create Article</a>
-                            </button type="button" class="btn btn-sm">
-                            <button type="button" class="btn btn-sm">
+                            </button>
+                            <button style="margin:5px" type="button" class="btn btn-sm">
                                 <a href="/accounts/password_change">Change password</a>
-                            </button type="button" class="btn btn-sm">
-                            <button type="button" class="btn btn-sm">
+                            </button>
+                            <button style="margin:5px" type="button" class="btn btn-sm">
                                 <a href="accounts/login">Logout</a>
-                            </button type="button" class="btn btn-sm">
+                            </button>
                         </ul>
                     </li>
                 </ul>
-                
-                <a href="{%url 'new_post'%}">New Post
-                    <i class="fas fa-user text-white h3 ">
-                    </i>
-                <a href="{%url 'profile'%}">Profile
-                    <i class="fas fa-user text-white h3 ">
-                    </i>
-                </a>
+                <div class="navbar-right">
+                    <a href="{%url 'new_post'%}" style="padding:3px"><img src="../static/icons/icons8-add-24.png"
+                            alt="Add" width="24" height="24">
+                        <i class="fas fa-user text-white h3 ">
+                        </i></a>
+                    <a href="{%url 'profile'%}" style="padding:3px"><img src="../static/icons/Avatar.png" alt="Avatar"
+                            width="24px">
+                        <i class="fas fa-user text-white h3 ">
+                        </i>
+                    </a>
+                </div>
+
                 {% else %}
                 <li>
                     <a class='btn btn-default' href="/accounts/login">Login</a>
                 </li>
 
                 {% endif %}
+
             </div>
         </div>
         <div class="col-md-3"></div>
 
-        <div class=" navbar-right">
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
+
 
         </div>
 
